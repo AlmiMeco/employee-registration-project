@@ -12,12 +12,12 @@ public class EmployeeService {
     public static List<Employee> employeeList = new ArrayList<>();
 
 
-    public void saveEmployee(Employee employee){
+    public void saveEmployee(Employee employee) {
         employeeList.add(employee);
     }
 
 
-    public List<Employee> printEmployeeList(){
+    public List<Employee> printEmployeeList() {
         return employeeList;
     }
 

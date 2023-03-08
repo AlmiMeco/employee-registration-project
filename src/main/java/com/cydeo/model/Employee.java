@@ -15,7 +15,7 @@ public class Employee {
     private String firstName, lastName, email, password;
 
     private String address, address2, city, state;
-@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     private int zipCode;
