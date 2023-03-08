@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Data
@@ -12,9 +13,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Employee {
 
-    private String firstName, lastName, email, password;
+//    @NotNull   ||  (field != null)
+//    @NotEmpty  ||  (field != "")
+//    @NotBlank  ||  (field != "  ")
 
-    private String address, address2, city, state;
+
+    private String firstName, lastName, email, password, address, city, state;
+
+    private String address2;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 

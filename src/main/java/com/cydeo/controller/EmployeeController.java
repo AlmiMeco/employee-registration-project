@@ -5,10 +5,13 @@ import com.cydeo.model.Employee;
 import com.cydeo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/employee")
@@ -34,7 +37,6 @@ public class EmployeeController {
     public String confirmEmployee(@ModelAttribute("employee") Employee employee) {
 
         employeeService.saveEmployee(employee);
-
 
         return "redirect:/employee/list";
     }
