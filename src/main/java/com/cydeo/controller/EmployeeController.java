@@ -5,6 +5,7 @@ import com.cydeo.model.Employee;
 import com.cydeo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class EmployeeController {
 
 
     @RequestMapping("/register")
-    public String createEmployee(Model model){
+    public String createEmployee(Model model) {
 
         model.addAttribute("employee", new Employee());
         model.addAttribute("states", DataGenerator.stateList());
@@ -29,13 +30,22 @@ public class EmployeeController {
         return "employee/register";
     }
 
-@PostMapping("/confirm")
-    public String confirmEmployee(@ModelAttribute("employee") Employee employee){
+    @PostMapping("/confirm")
+    public String confirmEmployee(@ModelAttribute("employee") Employee employee) {
 
         employeeService.saveEmployee(employee);
 
-        return "employee/confirm";
+
+        return "redirect:/employee/list";
     }
 
+    @GetMapping("/list")
+    public String listEmployees(Model model) {
+
+        model.addAttribute("employeeList", employeeService.printEmployeeList());
+
+        return "employee/confirm";
+
+    }
 
 }
